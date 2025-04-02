@@ -45,13 +45,14 @@ public partial class InfoParser : IParser<GpioInfoResult>
 
     private static bool TryGetGpioDetails(string line, Gpio gpio)
     {
-        var chipPattern = GpioDetailsRegex();
-        var chipMatch = chipPattern.Match(line);
-
-        if (!chipMatch.Success) return false;
+        var gpioPattern = GpioDetailsRegex();
+        var gpioMatch = gpioPattern.Match(line);
+    
+        if (!gpioMatch.Success) 
+            return false;
         
-        gpio.Id = int.Parse(chipMatch.Groups[1].Value);
-        gpio.Name = (chipMatch.Groups[2].Value);
+        gpio.Id = int.Parse(gpioMatch.Groups[1].Value);
+        gpio.Name = (gpioMatch.Groups[2].Value);
         return true;
     }
 
@@ -70,6 +71,6 @@ public partial class InfoParser : IParser<GpioInfoResult>
     [GeneratedRegex(@"gpiochip(\d+)")]
     private static partial Regex ChipNumberRegex();
 
-    [GeneratedRegex(@"^line\s+(\d+):\s+(?:""""(.+?)""""|\S+)\s+")]
+    [GeneratedRegex(@"\s+line\s+(\d+):\s+""([^""]*)""")]
     private static partial Regex GpioDetailsRegex();
 }
