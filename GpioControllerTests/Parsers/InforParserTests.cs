@@ -28,6 +28,7 @@ public class InforParserTests
             	line   8: "9J3 Switch HDMI CEC/7J1 Header " unused input active-high 
             	line   9: "7J1 Header Pin13" unused input active-high 
             	line  10: "7J1 Header Pin15" unused output active-high 
+            	line  11:      unnamed       unused   input  active-high 
             gpiochip1 - 100 lines:
             	line  14: "Eth Link LED" unused input active-high 
             	line  15: "Eth Activity LED" unused input active-high 
@@ -48,8 +49,11 @@ public class InforParserTests
             """;
         
         var result = sut.Parse(terminalOutput).Result;
-        result.Count().Should().Be(27);
+        result.Count().Should().Be(28);
         result.First(gpio => gpio.Id == 20).Chipset.Should().Be(1);
         result.First(gpio => gpio.Id == 20).Name.Should().Be("9J1 Header Pin2");
+        
+        result.First(gpio => gpio.Id == 11).Chipset.Should().Be(0);
+        result.First(gpio => gpio.Id == 11).Name.Should().Be("unnamed");
     }
 }

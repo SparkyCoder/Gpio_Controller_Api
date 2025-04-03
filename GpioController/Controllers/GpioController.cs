@@ -1,8 +1,6 @@
 using GpioController.Commands.Request;
-using GpioController.Commands.Results;
-using GpioController.Extensions;
-using GpioController.Factories;
 using GpioController.Models;
+using GpioController.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -11,33 +9,35 @@ namespace GpioController.Controllers;
 
 [ApiController]
 [Route("gpios")]
-public class GpioController(IOptions<AuthorizationSettings> authorizationSettings, ICommandFactory commandFactory) : SecureController(authorizationSettings)
+public class GpioController(IOptions<AuthorizationSettings> authorizationSettings, IGpioService gpioService) : SecureController(authorizationSettings)
 {
     [AllowAnonymous]
-    [HttpGet(Name = "GetAll")]
+    [HttpGet]
     public IActionResult Get()
     {
-        var command = commandFactory.GetCommand<GpioInfoRequest, GpioInfoResult>();
-        var gpios = command.Execute(new GpioInfoRequest());
+        var gpios = gpioService.GetGpios();
         return Ok(gpios);
     }
     
     [AllowAnonymous]
+    [HttpGet]
+    [Route("{id}")]
+    public IActionResult GetById([FromRoute] int id)
+    {
+        var gpio = gpioService.GetGpioById(id);
+        return Ok(gpio);
+    }
+    
+    [AllowAnonymous]
     // [Authorize]
-    [HttpPatch(Name = "Patch")]
-    public IActionResult Patch([FromBody] IEnumerable<GpioSetRequest> patchRequest)
+    [HttpPost]
+    [Route("state")]
+    public IActionResult GetStateById([FromBody] IEnumerable<GpioSetRequest> updateRequest)
     {
         // if (!IsAuthorized())
         //     return Unauthorized();
 
-        new Action(() =>
-        {
-            foreach (var setRequest in patchRequest)
-            {
-                var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
-                command.Execute(setRequest);
-            }
-        }).StartOnBackgroundThread();
+        gpioService.UpdateState(updateRequest);
         
         return NoContent();
     }

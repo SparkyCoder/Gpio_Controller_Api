@@ -7,6 +7,17 @@ public class State(string state)
     public static State High => new("1");
     public static State Low => new("0");
 
+    public static bool CanParse(string value)
+    {
+        if (string.Equals(value, "High", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(value, "1", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(value, "Low", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(value, "0", StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        return false;
+    }
+
     public static State Parse(string value)
     {
         if (string.Equals(value, "High", StringComparison.OrdinalIgnoreCase) || string.Equals(value, "1", StringComparison.OrdinalIgnoreCase))

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using GpioController.Exceptions;
 
 namespace GpioController.Middlware;
 
@@ -10,18 +11,18 @@ public class ExceptionMiddleware(RequestDelegate next)
         {
             await next.Invoke(context);
         }
-        catch (Exception ex) when (ex is Exception)
+        catch (Exception ex) when (ex is InvalidStateException)
         {
             var response = context.Response;
-            response.StatusCode = 500;
+            response.StatusCode = 400;
             var message = JsonSerializer.Serialize(new
             {
-                code = 500,
+                code = 400,
                 message = ex.Message
             });
             await response.WriteAsync(message);
         }
-        catch (Exception ex) when (ex is Exception)
+        catch (Exception ex) when (ex is GpioNotFoundException or NoGpiosFoundException)
         {
             var response = context.Response;
             response.StatusCode = 404;

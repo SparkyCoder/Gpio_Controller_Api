@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using GpioController.Commands.Results;
+using GpioController.Extensions;
 using GpioController.Models;
 
 namespace GpioController.Parsers;
@@ -52,7 +53,9 @@ public partial class InfoParser : IParser<GpioInfoResult>
             return false;
         
         gpio.Id = int.Parse(gpioMatch.Groups[1].Value);
-        gpio.Name = (gpioMatch.Groups[2].Value);
+
+        var name = gpioMatch.Groups[2].Value;
+        gpio.Name = name.RemoveQuotes();
         return true;
     }
 
@@ -71,6 +74,6 @@ public partial class InfoParser : IParser<GpioInfoResult>
     [GeneratedRegex(@"gpiochip(\d+)")]
     private static partial Regex ChipNumberRegex();
 
-    [GeneratedRegex(@"\s+line\s+(\d+):\s+""([^""]*)""")]
+    [GeneratedRegex(@"\s+line\s+(\d+):\s+(""([^""]+)""|\S+)")]
     private static partial Regex GpioDetailsRegex();
 }

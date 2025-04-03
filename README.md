@@ -53,62 +53,63 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to gpio info and read / write abilities. 
 
-This project was originally created as a quick way to integrate with [Libre Computer developement boards](https://libre.computer/).
-Unlike the Rasberry Pi boards, there's no dedicated code editor or purpose built libraries like WiringPi or Pigpio. The difference in chip architectures adds further complexity. 
+- Do you want to start using GPIOs on your SBC?
+- Don't want to learn about SBC Chipsets, architectures, or drivers?
+- Want a simple solution that works regardless of manufacturer?
 
-This API abstracts the need to understand most underlying hardware, chipset, or drivers your board is using. You can even skip the coding. 
- 
-Simply use [curl](https://curl.se/), [PostMan](https://www.postman.com/), or any other software that allows you to make REST API calls.
-
-
+Well, you're in the right place.<br/>
+No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to gpio functionality.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Okay, let's get started...
-
 ### Prerequisites
 
-- Have a Linux Distro installed on your board.
- 
-  Follow your boards documentation if you haven't already.
-<br /><br />
-For this tutorial we'll be using a [La Potato AML-S905X-CC](https://hub.libre.computer/t/ubuntu-22-04-jammy-lts-for-libre-computer-boards/20) with Ubuntu 22.4 (Jammy) installed.
-<br />If you have the same board and don't mind using a headless version, use the [base-arm64+aml-s905x-cc](https://distro.libre.computer/ci/ubuntu/22.04/ubuntu-22.04.3-preinstalled-base-arm64%2Baml-s905x-cc.img.xz) version.
-<br/>
+- Have a Linux Distro installed on your board. 
+- <details>
+  <summary>More Info</summary>
+   <br/>Follow your boards documentation if you haven't already. <br/>
 
-  
-- Ensure you have curl installed:
+    For example, I personally use a [La Potato AML-S905X-CC](https://hub.libre.computer/t/ubuntu-22-04-jammy-lts-for-libre-computer-boards/20) with [Ubuntu 22.4 (Jammy) installed](https://en.wikipedia.org/wiki/Ubuntu_version_history).
+<br />If you have the same board and don't mind using a headless version, use the [base-arm64+aml-s905x-cc](https://distro.libre.computer/ci/ubuntu/22.04/ubuntu-22.04.3-preinstalled-base-arm64%2Baml-s905x-cc.img.xz) version.
+</details>
+
+
+<details>
+  <summary>Optional Installs</summary>
+
+- Install curl:
+
 ```sh
   sudo apt-get install curl
 ```
 
-- <b>Optional:</b> Install crontab if you want to automatically run the API on startup. 
+- Install crontab if you want to automatically run the API on startup. 
+
 ```sh
   sudo apt-get install crontab
 ```
+</details>
 
 ### Installation
-1. Boot up your board and log in
-2. Run the debian package installation
+1. Run the debian package installation
    ```sh
    sudo curl https://raw.githubusercontent.com/SparkyCoder/Gpio_Controller_Api/refs/heads/main/Installation/Install.sh | bash
    ```
-3. <b>Optional:</b> To run the API on startup
-   1. Run
+<details>
+  <summary>Optional Installs</summary>
+
+1. To start the API on reboot:
       ```sh
       sudo crontab -e
       ```
-      2. Then add the following line to the file
-      ```sh
-      @reboot cd/opt/gpio-controller-api-1.1; ./GpioController
-      ```
-<br />
-Congrats! That's it!
+2. Then add the following line to the file
+   ```sh
+   @reboot cd/opt/gpio-controller-api-1.1; ./GpioController
+   ```
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -116,18 +117,45 @@ Congrats! That's it!
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Your API should now be listening for requests on Port 3005 (Change in [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json)).<br/>
-Using curl send an HTTP request to your boards ip address using the routes below.<br/>
+[Postman Documentation](https://documenter.getpostman.com/view/2447338/2sB2cSiPcM)
+<details>
+  <summary>GET /gpios</summary>
 
-Endpoints:
-- GET /gpios - Returns a list available GPIOs on your board
-- GET /gpios/{id} - Coming Soon... - Read the gpio state High (1) or Low (0)
-- PATCH /gpios - Change the GPIOs output to High (1) or Low (0)
+- Description: Get information about all available GPIOs on your board. <br/><br/>
 
-Examples:
+- Example
+
 ```sh
     curl -X GET "http://192.168.1.144:3005/gpios" 
 ```
+
+
+<b>Important! <br/>
+- The ID from the response will correlate to the Linux ID in your SBC documentation. 
+- Not all GPIO states can be updated. You'll see an error on the SBC terminal if you attempt this and it cannot be updated.</b>
+
+</details>
+
+<details>
+  <summary>GET /gpios/{id}</summary>
+
+- Description: Get information about a specific GPIO on your board.
+
+
+- Example
+
+```sh
+    curl -X GET "http://192.168.1.144:3005/gpios/10" 
+```
+</details>
+
+<details>
+  <summary>POST /gpios/state</summary>
+
+- Description: Allows you to change multiple GPIO states to "Low" or "High".
+
+
+- Example 1 (Single Request / No Options):
 
 ```sh
     curl -X PATCH "http://192.168.1.144:3005/gpios" \
@@ -136,36 +164,72 @@ Examples:
            {
                "Gpio": 81,
                "Chipset": 1,
-               "State": "Low",
-               "Options": {
-                   "Milliseconds": 1000,
-                   "RepeatTimes": 2
-               }
+               "State": "Low"
            }
          ]'
 ```
 
-## Advanced Usage
 
-In some cases, you'll want to reach your API from outside your local intranet. <br/>
-To do this you'll need to go to your router and add a rule. It's different for each router, but basically, you'll want to allow external traffic through to your board's IP and expose port 3005. Once you do this your API will be accessible via your public IP assigned by your ISP. 
-<br/><br/>
-If you do this it's is recommended to put Bearer Token Authorization around your endpoints. If you navigate to the [GpioController](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/Controllers/GpioController.cs) You can see that there are some commented out lines. If you uncomment `[Authorize]` and comment out `[AllowAnonymous]` - Then uncomment the following lines.
-This will require users to provide a valid Google JWT. 
-<br/> 
-<br/>
-If you wish to restrict your API to specific users you can uncomment the `IsAuthorized` lines so that it looks like this example:
-```csharp
-    [Authorize]
-    [HttpPatch(Name = "Patch")]
-    public IActionResult Patch([FromBody] IEnumerable<GpioSetRequest> patchRequest)
-    {
-        if (!IsAuthorized())
-             return Unauthorized();
-        ...
+- Example 2 (Single Request / With Options):
+
+```sh
+    curl -X PATCH "http://192.168.1.144:3005/gpios" \
+     -H "Content-Type: application/json" \
+     -d '[
+            {
+                "Gpio": 81,
+                "Chipset": 1,
+                "State": "Low",
+                "Options": {
+                    "Milliseconds": 1000,
+                    "RepeatTimes": 2
+                }
+            }
+        ]'
 ```
 
-Then only users whitelisted in your [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) will be allowed to call your APIs. 
+
+- Example 3 (Multiple Requests / With Options):
+
+```sh
+    curl -X PATCH "http://192.168.1.144:3005/gpios" \
+     -H "Content-Type: application/json" \
+     -d '[
+            {
+                "Gpio": 93,
+                "Chipset": 1,
+                "State": "High",
+                "Options": {
+                    "Milliseconds": 50,
+                    "RepeatTimes": 10
+                }
+            },
+            {
+                "Gpio": 81,
+                "Chipset": 1,
+                "State": "Low",
+                "Options": {
+                    "Milliseconds": 1000,
+                    "RepeatTimes": 2
+                }
+            }
+        ]'
+```
+</details>
+
+
+
+## Settings
+
+To update API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your `/opt/gpio-controller-api-1.1` directory.
+
+
+- Your API defaults to Port 3005. This can be updated in your AppSettings.
+- Your IP binds to 0:0:0:0 which means it will be accessible on any IP address associated with your SBC. Use `ifconfig` to see that information.
+
+
+- <b>Warning!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to install the Secure API version which requires a Google JWT Bearer Token for authorization. Without it, anybody can call your API.
+<br/>
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -208,7 +272,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 David Kobuszewski - dkob8789@gmail.com
 
-Project Link: [Gpio_Controller_Api](ps://github.com/SparkyCoder/Gpio_Controller_Api)
+Project Link: [Gpio Controller Api](https://github.com/SparkyCoder/Gpio_Controller_Api)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

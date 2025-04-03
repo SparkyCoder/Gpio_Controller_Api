@@ -19,15 +19,15 @@ public class Program
         builder.Services.Configure<AuthorizationSettings>(
             builder.Configuration.GetSection("Authorization")
         );
-        
+
         builder.Services.AddTransient<ITerminalService, TerminalService>();
+        builder.Services.AddTransient<IGpioService, GpioService>();
         builder.Services.AddTransient<IParser<GpioInfoResult>, InfoParser>();
         builder.Services.AddTransient<IParser<GpioSetResult>, UpdateParser>();
         builder.Services.AddTransient<ICommand<GpioInfoRequest, GpioInfoResult>, GpioInfoCommand>();
         builder.Services.AddTransient<ICommand<GpioSetRequest, GpioSetResult>, GpioSetCommand>();
         builder.Services.AddTransient<ICommandFactory>(provider => new CommandFactory(provider));
-        
-        
+
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -44,10 +44,12 @@ public class Program
         builder.Services.AddControllers();
 
         var app = builder.Build();
+
         app.UseMiddleware<ExceptionMiddleware>();
         app.UseAuthorization();
         app.UseHttpsRedirection();
         app.MapControllers();
+        
         app.Run();
     }
 }
