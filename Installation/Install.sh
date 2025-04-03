@@ -15,6 +15,7 @@ case $ARCHITECTURE in
         ;;
 esac
 
+sudo apt-get install gpiod &&
 TEMP_DEB="$(mktemp)" &&
 wget -O "$TEMP_DEB" "$URL" &&
 sudo dpkg -i "$TEMP_DEB" &&

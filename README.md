@@ -77,20 +77,18 @@ Okay, let's get started...
 
 ### Prerequisites
 
-The first thing you need to do is ensure you've already installed some version of Linux on your development board. <br /> 
-Follow your boards documentation if you haven't already.
+- Have a Linux Distro installed on your board.
+ 
+  Follow your boards documentation if you haven't already.
 <br /><br />
 For this tutorial we'll be using a [La Potato AML-S905X-CC](https://hub.libre.computer/t/ubuntu-22-04-jammy-lts-for-libre-computer-boards/20) with Ubuntu 22.4 (Jammy) installed.
 <br />If you have the same board and don't mind using a headless version, use the [base-arm64+aml-s905x-cc](https://distro.libre.computer/ci/ubuntu/22.04/ubuntu-22.04.3-preinstalled-base-arm64%2Baml-s905x-cc.img.xz) version.
+<br/>
 
-Next steps:
+  
 - Ensure you have curl installed:
 ```sh
   sudo apt-get install curl
-```
-- Ensure you have gpiod installed
-```sh
-  sudo apt-get install gpiod
 ```
 
 - <b>Optional:</b> Install crontab if you want to automatically run the API on startup. 
@@ -104,16 +102,7 @@ Next steps:
    ```sh
    sudo curl https://raw.githubusercontent.com/SparkyCoder/Gpio_Controller_Api/refs/heads/main/Installation/Install.sh | bash
    ```
-3. Navigate to the install folder. 
-<br/><b>Don't skip this step!</b> If you do, the API will not work as expected.
-   ```sh
-   cd /opt/gpio-controller-api-1.1
-   ```
-4. Run the application
-   ```sh
-   sudo ./GpioController
-   ```
-4. <b>Optional:</b> To run the API on startup
+3. <b>Optional:</b> To run the API on startup
    1. Run
       ```sh
       sudo crontab -e
@@ -131,8 +120,8 @@ Congrats! That's it!
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Your API should now be listening for requests on Port 3005 of your developement board.
-Using curl or PostMan send an HTTP to your boards ip address using the routes below.<br/>
+Your API should now be listening for requests on Port 3005 (Change in [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json)).<br/>
+Using curl send an HTTP request to your boards ip address using the routes below.<br/>
 
 Endpoints:
 - GET /gpios - Returns a list available GPIOs on your board
