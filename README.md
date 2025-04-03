@@ -42,6 +42,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#settings">Settings</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -68,7 +69,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ### Prerequisites
 
 - Have a Linux Distro installed on your board. 
-- <details>
+    <details>
   <summary>More Info</summary>
    <br/>Follow your boards documentation if you haven't already. <br/>
 
@@ -119,14 +120,14 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ## Usage
 [Postman Documentation](https://documenter.getpostman.com/view/2447338/2sB2cSiPcM)
 <details>
-  <summary>GET /gpios</summary>
+  <summary>GET /sbc/chipsets/gpios</summary>
 
 - Description: Get information about all available GPIOs on your board. <br/><br/>
 
 - Example
 
 ```sh
-    curl -X GET "http://192.168.1.144:3005/gpios" 
+    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/gpios" 
 ```
 
 
@@ -137,7 +138,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 </details>
 
 <details>
-  <summary>GET /gpios/{id}</summary>
+  <summary>GET /sbc/chipsets/1/gpios/81</summary>
 
 - Description: Get information about a specific GPIO on your board.
 
@@ -145,54 +146,46 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X GET "http://192.168.1.144:3005/gpios/10" 
+    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81" 
 ```
 </details>
 
 <details>
-  <summary>POST /gpios/state</summary>
+  <summary>GET /sbc/chipsets/1/gpios/81/state</summary>
 
-- Description: Allows you to change multiple GPIO states to "Low" or "High".
+- Description: Read current state of your GPIO
 
 
-- Example 1 (Single Request / No Options):
+- Example
 
 ```sh
-    curl -X PATCH "http://192.168.1.144:3005/gpios" \
-     -H "Content-Type: application/json" \
-     -d '[
-           {
-               "Gpio": 81,
-               "Chipset": 1,
-               "State": "Low"
-           }
-         ]'
+    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state" 
 ```
+</details>
+
+<details>
+  <summary>POST /sbc/chipsets/1/gpios/81/state/1</summary>
+
+- Description: Change the state of a single GPIO
 
 
-- Example 2 (Single Request / With Options):
+- Example
 
 ```sh
-    curl -X PATCH "http://192.168.1.144:3005/gpios" \
-     -H "Content-Type: application/json" \
-     -d '[
-            {
-                "Gpio": 81,
-                "Chipset": 1,
-                "State": "Low",
-                "Options": {
-                    "Milliseconds": 1000,
-                    "RepeatTimes": 2
-                }
-            }
-        ]'
+    curl -X POST "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state/1" 
 ```
+</details>
+
+<details>
+  <summary>POST /sbc/chipsets/gpios/state</summary>
+
+- Description: Allows you to change multiple GPIO states to "Low" or "High" You can also choose to repeat the task or add a delay.
 
 
-- Example 3 (Multiple Requests / With Options):
+- Example :
 
 ```sh
-    curl -X PATCH "http://192.168.1.144:3005/gpios" \
+    curl -X PATCH "http://192.168.1.111:3005/sbc/chipsets/gpios/state" \
      -H "Content-Type: application/json" \
      -d '[
             {
@@ -221,11 +214,12 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 ## Settings
 
-To update API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your `/opt/gpio-controller-api-1.1` directory.
+To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.1`.
 
 
 - Your API defaults to Port 3005. This can be updated in your AppSettings.
 - Your IP binds to 0:0:0:0 which means it will be accessible on any IP address associated with your SBC. Use `ifconfig` to see that information.
+- If you install the sucure version (see below) update the AuthorizedEmails section to include your email. This will give you access to your API. 
 
 
 - <b>Warning!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to install the Secure API version which requires a Google JWT Bearer Token for authorization. Without it, anybody can call your API.
@@ -261,7 +255,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the Unlicense License. See `LICENSE.txt` for more information.
+ See [LICENSE.txt](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

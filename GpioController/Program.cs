@@ -22,9 +22,12 @@ public class Program
 
         builder.Services.AddTransient<ITerminalService, TerminalService>();
         builder.Services.AddTransient<IGpioService, GpioService>();
+        builder.Services.AddTransient<IStateService, StateService>();
         builder.Services.AddTransient<IParser<GpioInfoResult>, InfoParser>();
         builder.Services.AddTransient<IParser<GpioSetResult>, UpdateParser>();
+        builder.Services.AddTransient<IParser<GpioReadResult>, ReadParser>();
         builder.Services.AddTransient<ICommand<GpioInfoRequest, GpioInfoResult>, GpioInfoCommand>();
+        builder.Services.AddTransient<ICommand<GpioReadRequest, GpioReadResult>, GpioReadCommand>();
         builder.Services.AddTransient<ICommand<GpioSetRequest, GpioSetResult>, GpioSetCommand>();
         builder.Services.AddTransient<ICommandFactory>(provider => new CommandFactory(provider));
 

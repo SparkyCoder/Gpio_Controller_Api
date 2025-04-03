@@ -7,7 +7,7 @@ using GpioController.Models;
 
 namespace GpioController.Services;
 
-public class GpioService( ICommandFactory commandFactory) : IGpioService
+public class GpioService(ICommandFactory commandFactory) : IGpioService
 {
     public IEnumerable<Gpio> GetGpios()
     {
@@ -20,46 +20,14 @@ public class GpioService( ICommandFactory commandFactory) : IGpioService
         return gpios.Result;
     }
 
-    public Gpio GetGpioById(int id)
+    public Gpio GetGpioById(int chipsetId, int gpioId)
     {
         var gpios = GetGpios();
-        var requestedGpio = gpios.FirstOrDefault(gpio => gpio.Id == id);
+        var requestedGpio = gpios.FirstOrDefault(gpio => gpio.Id == gpioId && gpio.Chipset == chipsetId);
 
         if (requestedGpio == null)
-            throw new GpioNotFoundException(id);
-        
+            throw new GpioNotFoundException(chipsetId, gpioId);
+
         return requestedGpio;
-    }
-
-    public void UpdateState(IEnumerable<GpioSetRequest> updateRequests)
-    {
-        ValidateUpdateRequest(updateRequests);
-        
-        new Action(() =>
-        {
-            foreach (var request in updateRequests)
-            {
-                var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
-                command.Execute(request);
-            }
-        }).StartOnBackgroundThread();
-    }
-
-    private void ValidateUpdateRequest(IEnumerable<GpioSetRequest> updateRequests)
-    {
-        var gpios = GetGpios();
-
-        foreach (var request in updateRequests)
-        {
-            var gpioId = request.Gpio;
-            var chipsetId = request.Chipset;
-            var state = request.State;
-            
-            if(!gpios.Chipset(chipsetId).HasGpio(gpioId))
-                throw new NoGpiosFoundOnChipsetException(gpioId, chipsetId);
-            
-            if(!State.CanParse(state))
-                throw new InvalidStateException(state);
-        }
     }
 }

@@ -1,6 +1,6 @@
 namespace GpioController.Parsers;
 
-public interface IParser<T>
+public interface IParser<out TResult>
 {
-    T Parse(string terminalOutput);
+    TResult Parse(string terminalOutput);
 }

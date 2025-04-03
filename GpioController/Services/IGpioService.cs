@@ -6,6 +6,5 @@ namespace GpioController.Services;
 public interface IGpioService
 {
     IEnumerable<Gpio> GetGpios();
-    Gpio GetGpioById(int id);
-    void UpdateState(IEnumerable<GpioSetRequest> updateRequests);
+    Gpio GetGpioById(int chipsetId, int gpioId);
 }

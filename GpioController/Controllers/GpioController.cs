@@ -1,4 +1,3 @@
-using GpioController.Commands.Request;
 using GpioController.Models;
 using GpioController.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -8,11 +7,12 @@ using Microsoft.Extensions.Options;
 namespace GpioController.Controllers;
 
 [ApiController]
-[Route("gpios")]
+[Route("sbc")]
 public class GpioController(IOptions<AuthorizationSettings> authorizationSettings, IGpioService gpioService) : SecureController(authorizationSettings)
 {
     [AllowAnonymous]
     [HttpGet]
+    [Route("chipsets/gpios")]
     public IActionResult Get()
     {
         var gpios = gpioService.GetGpios();
@@ -21,24 +21,10 @@ public class GpioController(IOptions<AuthorizationSettings> authorizationSetting
     
     [AllowAnonymous]
     [HttpGet]
-    [Route("{id}")]
-    public IActionResult GetById([FromRoute] int id)
+    [Route("chipsets/{chipsetId}/gpios/{gpioId}")]
+    public IActionResult GetById([FromRoute] int chipsetId, [FromRoute] int gpioId)
     {
-        var gpio = gpioService.GetGpioById(id);
+        var gpio = gpioService.GetGpioById(chipsetId, gpioId);
         return Ok(gpio);
-    }
-    
-    [AllowAnonymous]
-    // [Authorize]
-    [HttpPost]
-    [Route("state")]
-    public IActionResult GetStateById([FromBody] IEnumerable<GpioSetRequest> updateRequest)
-    {
-        // if (!IsAuthorized())
-        //     return Unauthorized();
-
-        gpioService.UpdateState(updateRequest);
-        
-        return NoContent();
     }
 }
