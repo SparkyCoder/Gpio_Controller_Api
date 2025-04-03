@@ -16,7 +16,7 @@ case $ARCHITECTURE in
 esac
 
 TEMP_DEB="$(mktemp)" &&
-wget -O "$TEMP_DEB" '' &&
+wget -O "$TEMP_DEB" "$URL" &&
 sudo dpkg -i "$TEMP_DEB"
 rm -f "$TEMP_DEB"
 
