@@ -15,19 +15,21 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
         request.State = State.Parse(request.State).ToString();
         return $"gpioset {request.Chipset} {request.Gpio}={request.State}";
     };
+
     protected override void RunOptionalPostCommandLogic(GpioSetRequest request, GpioSetResult result)
     {
         if (request.Options == null) return;
-        
+
         var sleepTime = request.Options?.Milliseconds ?? 0;
-        
+
         for (var timesRepeated = 0; timesRepeated < request.Options?.RepeatTimes; timesRepeated++)
         {
             Thread.Sleep(sleepTime);
             RunOpposite(request);
-            Thread.Sleep(sleepTime);
-            RunOpposite(request);
         }
+
+        Thread.Sleep(sleepTime);
+        RunOpposite(request);
     }
 
     private void RunOpposite(GpioSetRequest request)
