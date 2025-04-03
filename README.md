@@ -1,11 +1,10 @@
 <a id="readme-top"></a>
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
-
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 <!-- PROJECT LOGO -->
@@ -103,7 +102,7 @@ Next steps:
 1. Boot up your board and log in
 2. Run the debian package installation
    ```sh
-   sudo curl https://raw.githubusercontent.com/SparkyCoder/Gpio_Controller_Api/refs/heads/main/Installation/install.sh | bash
+   sudo curl https://raw.githubusercontent.com/SparkyCoder/Gpio_Controller_Api/refs/heads/main/Installation/Install.sh | bash
    ```
 3. Navigate to the install folder. 
 <br/><b>Don't skip this step!</b> If you do, the API will not work as expected.
@@ -242,6 +241,8 @@ Project Link: [Gpio_Controller_Api](ps://github.com/SparkyCoder/Gpio_Controller_
 [license-shield]: https://img.shields.io/github/license/SparkyCoder/Gpio_Controller_Api.svg?style=for-the-badge
 [license-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/david-kobuszewski-60315428
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
