@@ -57,7 +57,7 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
     {
         foreach (var gpioId in gpioIdsToValidate)
         {
-            ValidateIndividualGpio(gpioId, chipsetId, state);
+            ValidateIndividualGpio(chipsetId, gpioId, state);
         }
     }
 
