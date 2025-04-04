@@ -1,0 +1,548 @@
+{
+	"info": {
+		"_postman_id": "3000a1da-1f9f-4cdd-9165-9d39c13d46da",
+		"name": "Gpio Controller API",
+		"description": "Kickstart your DIY project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2447338"
+	},
+	"item": [
+		{
+			"name": "Get All Gpios",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"gpios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Gpios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"144"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"gpios"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:13:39 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"chipset\": 0,\n        \"id\": 0,\n        \"name\": \"UART TX\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 1,\n        \"name\": \"UART RX\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 2,\n        \"name\": \"Blue LED\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 3,\n        \"name\": \"SDCard Voltage Switch\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 4,\n        \"name\": \"7J1 Header Pin5\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 5,\n        \"name\": \"7J1 Header Pin3\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 6,\n        \"name\": \"7J1 Header Pin12\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 7,\n        \"name\": \"IR In\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 8,\n        \"name\": \"9J3 Switch HDMI CEC/7J1 Header \"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 9,\n        \"name\": \"7J1 Header Pin13\"\n    },\n    {\n        \"chipset\": 0,\n        \"id\": 10,\n        \"name\": \"7J1 Header Pin15\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 0,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 1,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 2,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 3,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 4,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 5,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 6,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 7,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 8,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 9,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 10,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 11,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 12,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 13,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 14,\n        \"name\": \"Eth Link LED\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 15,\n        \"name\": \"Eth Activity LED\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 16,\n        \"name\": \"HDMI HPD\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 17,\n        \"name\": \"HDMI SDA\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 18,\n        \"name\": \"HDMI SCL\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 19,\n        \"name\": \"HDMI_5V_EN\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 20,\n        \"name\": \"9J1 Header Pin2\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 21,\n        \"name\": \"Analog Audio Mute\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 22,\n        \"name\": \"2J3 Header Pin6\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 23,\n        \"name\": \"2J3 Header Pin5\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 24,\n        \"name\": \"2J3 Header Pin4\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 25,\n        \"name\": \"2J3 Header Pin3\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 26,\n        \"name\": \"eMMC D0\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 27,\n        \"name\": \"eMMC D1\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 28,\n        \"name\": \"eMMC D2\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 29,\n        \"name\": \"eMMC D3\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 30,\n        \"name\": \"eMMC D4\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 31,\n        \"name\": \"eMMC D5\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 32,\n        \"name\": \"eMMC D6\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 33,\n        \"name\": \"eMMC D7\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 34,\n        \"name\": \"eMMC Clk\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 35,\n        \"name\": \"eMMC Reset\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 36,\n        \"name\": \"eMMC CMD\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 37,\n        \"name\": \"ALT BOOT MODE\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 38,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 39,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 40,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 41,\n        \"name\": \"eMMC Data Strobe\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 42,\n        \"name\": \"SDCard D1\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 43,\n        \"name\": \"SDCard D0\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 44,\n        \"name\": \"SDCard CLK\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 45,\n        \"name\": \"SDCard CMD\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 46,\n        \"name\": \"SDCard D3\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 47,\n        \"name\": \"SDCard D2\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 48,\n        \"name\": \"SDCard Det\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 49,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 50,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 51,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 52,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 53,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 54,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 55,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 56,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 57,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 58,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 59,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 60,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 61,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 62,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 63,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 64,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 65,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 66,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 67,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 68,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 69,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 70,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 71,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 72,\n        \"name\": \"unnamed\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 73,\n        \"name\": \"Green LED\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 74,\n        \"name\": \"VCCK Enable\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 75,\n        \"name\": \"7J1 Header Pin27\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 76,\n        \"name\": \"7J1 Header Pin28\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 77,\n        \"name\": \"VCCK Regulator\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 78,\n        \"name\": \"VDDEE Regulator\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 79,\n        \"name\": \"7J1 Header Pin22\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 80,\n        \"name\": \"7J1 Header Pin26\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 81,\n        \"name\": \"7J1 Header Pin36\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 82,\n        \"name\": \"7J1 Header Pin38\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 83,\n        \"name\": \"7J1 Header Pin40\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 84,\n        \"name\": \"7J1 Header Pin37\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 85,\n        \"name\": \"7J1 Header Pin33\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 86,\n        \"name\": \"7J1 Header Pin35\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 87,\n        \"name\": \"7J1 Header Pin19\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 88,\n        \"name\": \"7J1 Header Pin21\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 89,\n        \"name\": \"7J1 Header Pin24\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 90,\n        \"name\": \"7J1 Header Pin23\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 91,\n        \"name\": \"7J1 Header Pin8\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 92,\n        \"name\": \"7J1 Header Pin10\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 93,\n        \"name\": \"7J1 Header Pin16\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 94,\n        \"name\": \"7J1 Header Pin18\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 95,\n        \"name\": \"7J1 Header Pin32\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 96,\n        \"name\": \"7J1 Header Pin29\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 97,\n        \"name\": \"7J1 Header Pin31\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 98,\n        \"name\": \"7J1 Header Pin7\"\n    },\n    {\n        \"chipset\": 1,\n        \"id\": 99,\n        \"name\": \"unnamed\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get GPIO By Id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"1",
+						"gpios",
+						"81"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get GPIO By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"144"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"1",
+								"gpios",
+								"81"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:14:28 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"chipset\": 1,\n    \"id\": 81,\n    \"name\": \"7J1 Header Pin36\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get State By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"1",
+						"gpios",
+						"81",
+						"state"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get State By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.1.111:3005/sbc/chipsets/1/gpios/81/state",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"111"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"1",
+								"gpios",
+								"81",
+								"state"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:43:40 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"state\": \"1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Single GPIO State",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/1/gpios/93/state/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"1",
+						"gpios",
+						"93",
+						"state",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateState",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"144"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"1",
+								"gpios",
+								"81",
+								"state",
+								"1"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:51:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Multiple GPIOs State (No Options)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"Gpios\": [93, 81],\n        \"Chipset\": 1,\n        \"State\": \"High\"\n    },\n    {\n        \"Gpios\": [94, 79],\n        \"Chipset\": 1,\n        \"State\": \"High\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.111:3005/sbc/chipsets/gpios/state",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"111"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"gpios",
+						"state"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Multiple GPIOs State (With Options)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"Gpio\": 93,\n        \"Chipset\": 1,\n        \"State\": \"Low\"\n    },\n    {\n        \"Gpio\": 81,\n        \"Chipset\": 1,\n        \"State\": \"Low\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios/state",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"144"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"gpios",
+								"state"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:55:19 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Multiple GPIOs State (With Options)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"Gpios\": [91, 92, 81],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    },\n    {\n        \"Gpios\": [91,92, 95],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    }\n    ,\n    {\n        \"Gpios\": [91,92, 80],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    },\n    {\n        \"Gpios\": [91,92, 79],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    },\n    {\n        \"Gpios\": [91,92, 94],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    },\n    {\n        \"Gpios\": [91,92, 93],\n        \"Chipset\": 1,\n        \"State\": \"0\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 1\n        }\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios/state",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"gpios",
+						"state"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateState (With Options)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"Gpio\": 93,\n        \"Chipset\": 1,\n        \"State\": \"High\",\n        \"Options\": {\n            \"Milliseconds\": 50,\n            \"RepeatTimes\": 20\n        }\n    },\n    {\n        \"Gpio\": 81,\n        \"Chipset\": 1,\n        \"State\": \"High\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 25\n        }\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios/state",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"144"
+							],
+							"port": "3005",
+							"path": [
+								"sbc",
+								"chipsets",
+								"gpios",
+								"state"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 21:55:13 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Multiple GPIOs State (Secured with Bearer Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgyMWYzYmM2NmYwNzUxZjc4NDA2MDY3OTliMWFkZjllOWZiNjBkZmIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMDIzNjQxMTE0NDA1LTduOW50cW5rYzJsaWNiY205ZWVhbWFpcnAwY3FmcXJjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTAyMzY0MTExNDQwNS03bjludHFua2MybGljYmNtOWVlYW1haXJwMGNxZnFyYy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwNDkxNTEyODAwNzk1NDczNzEyNiIsImVtYWlsIjoiZGtvYjg3ODlAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5iZiI6MTc0MzE4NDMyNywibmFtZSI6IkRhdmlkIEsiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jTHdSV0VScm5lMndyeHAtU1Btb1JMTDZoVV9MdUNld1loQmx4WENydnVuWmYyNkFuYkxhZz1zOTYtYyIsImdpdmVuX25hbWUiOiJEYXZpZCIsImZhbWlseV9uYW1lIjoiSyIsImlhdCI6MTc0MzE4NDYyNywiZXhwIjoxNzQzMTg4MjI3LCJqdGkiOiI4YTc2NTU4Y2YyNGI1YWJkN2VhYTVlZTllNTY1MDMwMzYzZWU5ZmU2In0.T1M7tD4zRKVPq8A-ubuWiNjVs3jLTRVOKSq8a7ptyFbd_2ufKR4TN_7p0B_iGqlAyDvx0tbtcimjFv686LCP5YxQrzg4-BbPiThaf8OSxhRtvVgFcKjU8pYqiBpvAJAkq6JlmMPMMX33cEIX1a4Y1i9s68jFa4P4jdoMvbAkpeDzeZEyDg_kX1iK0hUtKUY6jUZqQrWYGq5EPXwFscBphMqm4VxlxsPEuf2bSvMeS-NNN-w0j2C6ErjcFlY0W_g8yP9NyBhOFyE8bs8IItJkQEKFnk6gnQSgJT0HGPLu7CBa0CG3vwr2mh6broUiNl9uoi2CzQ6TAWqlxIotZylLtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"Gpios\": [93],\n        \"Chipset\": 1,\n        \"State\": \"Low\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 3\n        }\n    },\n    {\n        \"Gpios\": [81],\n        \"Chipset\": 1,\n        \"State\": \"Low\",\n        \"Options\": {\n            \"Milliseconds\": 1000,\n            \"RepeatTimes\": 3\n        }\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.144:3005/sbc/chipsets/gpios/state",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"144"
+					],
+					"port": "3005",
+					"path": [
+						"sbc",
+						"chipsets",
+						"gpios",
+						"state"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
