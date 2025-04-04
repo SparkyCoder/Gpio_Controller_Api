@@ -20,6 +20,6 @@ TEMP_DEB="$(mktemp)" &&
 wget -O "$TEMP_DEB" "$URL" &&
 sudo dpkg -i "$TEMP_DEB" &&
 rm -f "$TEMP_DEB" &&
-cd /opt/gpio-controller-api-1.2 &&
+cd /opt/gpio-controller-api-1.3 &&
 sudo ./GpioController
 
