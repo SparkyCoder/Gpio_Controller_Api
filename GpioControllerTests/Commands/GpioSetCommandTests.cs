@@ -47,6 +47,32 @@ public class GpioSetCommandTests
     }
     
     [Fact]
+    public void Execute_ShouldRunTerminalCommandCorrectly_WhenRunningAnOddNumberOfTimes()
+    {
+        var sut = GetSystemUnderTest();
+
+        var request = new GpioSetRequest
+        {
+            Chipset = 1,
+            Gpio = 81,
+            State = "Low",
+            Options = new OptionalSettings
+            {
+                Milliseconds = 50,
+                RepeatTimes = 3
+            }
+        };
+        
+        sut.Execute(request);
+
+        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("81=0"))))
+            .MustHaveHappenedANumberOfTimesMatching(times => times == 3);
+        
+        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("81=1"))))
+            .MustHaveHappenedANumberOfTimesMatching(times => times == 3);
+    }
+    
+    [Fact]
     public void Execute_ShouldRunTerminalCommandCorrectly_WithRequestWithoutAnyOptions()
     {
         var sut = GetSystemUnderTest();

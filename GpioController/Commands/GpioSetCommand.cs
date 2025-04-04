@@ -22,14 +22,11 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
 
         var sleepTime = request.Options?.Milliseconds ?? 0;
 
-        for (var timesRepeated = 0; timesRepeated < request.Options?.RepeatTimes; timesRepeated++)
+        for (var timesRepeated = 1; timesRepeated < request.Options?.RepeatTimes*2; timesRepeated++)
         {
             Thread.Sleep(sleepTime);
             RunOpposite(request);
         }
-
-        Thread.Sleep(sleepTime);
-        RunOpposite(request);
     }
 
     private void RunOpposite(GpioSetRequest request)

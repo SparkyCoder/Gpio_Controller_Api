@@ -56,11 +56,11 @@
 ## About The Project
 
 - Do you want to start using GPIOs on your SBC?
-- Don't want to learn about SBC Chipsets, architectures, or drivers?
+- Don't want to learn about chipsets, architectures, or drivers?
 - Want a simple solution that works regardless of manufacturer?
 
 Well, you're in the right place.<br/>
-No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to gpio functionality.
+No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to GPIO functionality.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -220,7 +220,7 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 
 - Your API defaults to Port 3005. This can be updated in your AppSettings.
 - Your IP binds to 0:0:0:0 which means it will be accessible on any IP address associated with your SBC. Use `ifconfig` to see that information.
-- If you install the sucure version (see below) update the AuthorizedEmails section to include your email. This will give you access to your API. 
+- If you install the secure version (see below) update the AuthorizedEmails section to include your email. This will give you access to your API. 
 
 
 - <b>Warning!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to install the Secure API version which requires a Google JWT Bearer Token for authorization. Without it, anybody can call your API.
@@ -229,10 +229,10 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] add GET /gpios endpoint to list available GPIOs
-- [x] Add PATCH /gpios endpoint to Update GPIO state
-- [ ] Add GET /gpios/{id} to read GPIO values
-- [ ] Add installation for Google JWT authorization via Debian package
+- [x] add to list available GPIOs
+- [x] Add endpoint to Update GPIO state
+- [x] Add endpoint to read GPIO values
+- [ ] Add secure endpoints debian package for Google JWT Auth
 - [ ] Add additional chipset architectures
     - [ ] linux-muscl-64
     - [ ] linux-arm
