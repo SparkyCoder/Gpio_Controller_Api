@@ -47,12 +47,12 @@ public class StateController(IOptions<AuthorizationSettings> authorizationSettin
     // [Authorize]
     [HttpPost]
     [Route("chipsets/gpios/state")]
-    public IActionResult UpdateMultipleStatesByRequest([FromRoute] int chipsetId, [FromRoute] int gpioId, [FromBody] IEnumerable<GpioSetRequest> updateRequest)
+    public IActionResult UpdateMultipleStatesByRequest([FromRoute] int chipsetId, [FromRoute] int gpioId, [FromBody] IEnumerable<GpioSetRequest> updateRequests)
     {
         // if (!IsAuthorized())
         //     return Unauthorized();
 
-        stateService.UpdateMultipleStates(updateRequest);
+        stateService.UpdateMultipleStates(updateRequests);
         
         return NoContent();
     }

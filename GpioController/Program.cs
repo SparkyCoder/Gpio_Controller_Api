@@ -29,7 +29,7 @@ public class Program
         builder.Services.AddTransient<ICommand<GpioInfoRequest, GpioInfoResult>, GpioInfoCommand>();
         builder.Services.AddTransient<ICommand<GpioReadRequest, GpioReadResult>, GpioReadCommand>();
         builder.Services.AddTransient<ICommand<GpioSetRequest, GpioSetResult>, GpioSetCommand>();
-        builder.Services.AddTransient<ICommandFactory>(provider => new CommandFactory(provider));
+        builder.Services.AddSingleton<ICommandFactory>(provider => new CommandFactory(provider));
 
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
