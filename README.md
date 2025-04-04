@@ -108,7 +108,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
       ```
 2. Then add the following line to the file
    ```sh
-   @reboot cd/opt/gpio-controller-api-1.2; ./GpioController
+   @reboot cd/opt/gpio-controller-api-1.3; ./GpioController
    ```
 </details>
 
@@ -173,7 +173,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X POST "http://192.168.1.144:3005/sbc/chipsets/1/gpios/{gpioId}/state/1" 
+    curl -X POST "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state/0" 
 ```
 </details>
 
@@ -190,7 +190,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
      -H "Content-Type: application/json" \
      -d '[
             {
-                "Gpio": 93,
+                "Gpios": [93, 74],
                 "Chipset": 1,
                 "State": "High",
                 "Options": {
@@ -199,7 +199,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
                 }
             },
             {
-                "Gpio": 81,
+                "Gpios": [81],
                 "Chipset": 1,
                 "State": "Low",
                 "Options": {
@@ -215,7 +215,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 ## Settings
 
-To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.2`.
+To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.3`.
 
 
 - Your API defaults to Port 3005. This can be updated in your AppSettings.

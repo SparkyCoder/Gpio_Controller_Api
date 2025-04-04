@@ -36,7 +36,7 @@ public class StateController(IOptions<AuthorizationSettings> authorizationSettin
         stateService.UpdateSingleState(new GpioSetRequest
         {
             Chipset = chipsetId,
-            Gpio = gpioId,
+            Gpios = [gpioId],
             State = state
         } );
         

@@ -28,22 +28,22 @@ public class GpioSetCommandTests
         var request = new GpioSetRequest
         {
             Chipset = 1,
-            Gpio = 81,
-            State = "Low",
+            Gpios = [81, 93],
+            State = "LoW",
             Options = new OptionalSettings
             {
                 Milliseconds = 50,
-                RepeatTimes = 2
+                RepeatTimes = 3
             }
         };
         
         sut.Execute(request);
 
-        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("81=0"))))
-            .MustHaveHappenedANumberOfTimesMatching(times => times == 2);
+        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("93=0") && command.Contains("81=0"))))
+            .MustHaveHappenedANumberOfTimesMatching(times => times == 3);
         
-        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("81=1"))))
-            .MustHaveHappenedANumberOfTimesMatching(times => times == 2);
+        A.CallTo(() => terminalService.RunCommand(A<string>.That.Matches(command => command.Contains("93=1") && command.Contains("81=1"))))
+            .MustHaveHappenedANumberOfTimesMatching(times => times == 3);
     }
     
     [Fact]
@@ -54,7 +54,7 @@ public class GpioSetCommandTests
         var request = new GpioSetRequest
         {
             Chipset = 1,
-            Gpio = 81,
+            Gpios = [81],
             State = "Low",
             Options = new OptionalSettings
             {
@@ -80,7 +80,7 @@ public class GpioSetCommandTests
         var request = new GpioSetRequest
         {
             Chipset = 1,
-            Gpio = 81,
+            Gpios = [81],
             State = "Low"
         };
         

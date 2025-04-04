@@ -13,7 +13,12 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
     protected override Func<GpioSetRequest, string> Command { get; } = request =>
     {
         request.State = State.Parse(request.State).ToString();
-        return $"gpioset {request.Chipset} {request.Gpio}={request.State}";
+
+        var individualCommands = request.Gpios.Select(gpio => $"gpioset {request.Chipset} {gpio}={request.State}").ToList();
+
+        var terminalCommand = string.Join(';', individualCommands);
+
+        return terminalCommand;
     };
 
     protected override void RunOptionalPostCommandLogic(GpioSetRequest request, GpioSetResult result)

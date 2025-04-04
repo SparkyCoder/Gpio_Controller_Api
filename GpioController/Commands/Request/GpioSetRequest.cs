@@ -3,7 +3,7 @@ namespace GpioController.Commands.Request;
 public class GpioSetRequest : Request
 {
     public required int Chipset { get; set; }
-    public required int  Gpio { get; set; }
+    public required IEnumerable<int> Gpios { get; set; }
     public required string  State { get; set; }
     public OptionalSettings? Options { get; set; }
 }

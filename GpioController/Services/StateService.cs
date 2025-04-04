@@ -25,7 +25,7 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
     
     public void UpdateSingleState(GpioSetRequest request)
     {
-        gpioService.GetGpioById(request.Chipset, request.Gpio);
+        gpioService.GetGpioById(request.Chipset, request.Gpios.First());
         
         var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
         command.Execute(request);
@@ -47,19 +47,23 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
 
     private void ValidateUpdateRequests(IEnumerable<GpioSetRequest> updateRequests)
     {
-        var gpios = gpioService.GetGpios();
-
         foreach (var request in updateRequests)
         {
-            ValidateRequest(gpios, request);
+            ValidateRequest(request.Gpios, request.Chipset, request.State);
         }
     }
 
-    private static void ValidateRequest(IEnumerable<Gpio> gpios, GpioSetRequest request)
+    private void ValidateRequest(IEnumerable<int> gpioIdsToValidate, int chipsetId, string state)
     {
-        var gpioId = request.Gpio;
-        var chipsetId = request.Chipset;
-        var state = request.State;
+        foreach (var gpioId in gpioIdsToValidate)
+        {
+            ValidateIndividualGpio(gpioId, chipsetId, state);
+        }
+    }
+
+    private void ValidateIndividualGpio(int chipsetId, int gpioId, string state)
+    {
+        var gpios = gpioService.GetGpios();
         
         if(!gpios.Chipset(chipsetId).HasGpio(gpioId))
             throw new NoGpiosFoundOnChipsetException(gpioId, chipsetId);
