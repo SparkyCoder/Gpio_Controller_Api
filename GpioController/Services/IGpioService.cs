@@ -7,4 +7,5 @@ public interface IGpioService
 {
     IEnumerable<Gpio> GetGpios();
     Gpio GetGpioById(int chipsetId, int gpioId);
+    IEnumerable<Gpio?> OrderResultsByFilter(IEnumerable<Gpio> results);
 }

@@ -19,6 +19,26 @@ public class Program
         builder.Services.Configure<AuthorizationSettings>(
             builder.Configuration.GetSection("Authorization")
         );
+        
+        builder.Services.Configure<FilterSettings>(
+            builder.Configuration.GetSection("Filters")
+        );
+        
+        var authorizedCorsOrigin = builder.Configuration
+            .GetSection("Authorization:AuthorizedCorsOrigin")
+            .Get<string>();
+        
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AuthorizedCorsPolicy", policy =>
+            {
+                policy 
+                .WithOrigins(authorizedCorsOrigin)
+                .AllowCredentials()
+                .AllowAnyHeader()
+                .WithMethods(["GET", "POST", "OPTIONS"]);
+            });
+        });
 
         builder.Services.AddTransient<ITerminalService, TerminalService>();
         builder.Services.AddTransient<IGpioService, GpioService>();
@@ -47,7 +67,7 @@ public class Program
         builder.Services.AddControllers();
 
         var app = builder.Build();
-
+        app.UseCors("AuthorizedCorsPolicy");
         app.UseMiddleware<ExceptionMiddleware>();
         app.UseAuthorization();
         app.UseHttpsRedirection();
