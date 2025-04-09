@@ -108,7 +108,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
       ```
 2. Then add the following line to the file
    ```sh
-   @reboot cd/opt/gpio-controller-api-1.4; ./GpioController
+   @reboot cd/opt/gpio-controller-api-1.4; ./GpioController >> /opt/gpio-controller-api-1.4-logs
    ```
 </details>
 

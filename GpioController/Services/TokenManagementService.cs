@@ -5,7 +5,7 @@ using GpioController.Models;
 
 namespace GpioController.Services;
 
-public class TokenManagementService(ICommandFactory commandFactory) : ITokenManagementService
+public class TokenManagementService(ICommandFactory commandFactory, ILogger<TokenManagementService> logger) : ITokenManagementService
 {
     private readonly List<ActiveTask> activeTokenSources = new();
     private readonly Lock lockingMechanism = new();
@@ -36,6 +36,7 @@ public class TokenManagementService(ICommandFactory commandFactory) : ITokenMana
             foreach (var cts in activeTokenSources.Where(cts => !cts.TokenSource.IsCancellationRequested))
             {
                 cts.TokenSource.Cancel();
+                logger.LogWarning($"Cancelling actions for Chipset {cts.ActiveRequest.Chipset} - GPIO {string.Join(',',cts.ActiveRequest.Gpios)}");
                 RunOppositeRequestToTurnOffAnyActiveGpios(cts.ActiveRequest);
                 Thread.Sleep(50);
             }

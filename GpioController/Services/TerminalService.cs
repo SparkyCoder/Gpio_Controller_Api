@@ -2,12 +2,13 @@ using System.Diagnostics;
 
 namespace GpioController.Services;
 
-public class TerminalService : ITerminalService
+public class TerminalService(ILogger<TerminalService> logger) : ITerminalService
 {
     public string RunCommand(string command)
     {
         var process = CreateProcess(command);
         process.Start();
+        logger.LogWarning($"Command Run: {command}");
         return ReadOutput(process);
     }
 
