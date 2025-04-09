@@ -6,9 +6,9 @@ using Microsoft.Extensions.Options;
 
 namespace GpioController.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("sbc")]
+[Authorize(Policy = "ConditionalPolicy")]
 public class GpioController(IOptions<AuthorizationSettings> authorizationSettings, IGpioService gpioService) : SecureController(authorizationSettings)
 {
     [HttpGet]

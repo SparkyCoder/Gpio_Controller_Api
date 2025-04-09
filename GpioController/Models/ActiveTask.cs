@@ -4,6 +4,6 @@ namespace GpioController.Models;
 
 public class ActiveTask
 {
-    public CancellationTokenSource TokenSource { get; set; }
-    public GpioSetRequest ActiveRequest { get; set; }
+    public required CancellationTokenSource TokenSource { get; set; }
+    public required GpioSetRequest ActiveRequest { get; set; }
 }

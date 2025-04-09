@@ -108,7 +108,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
       ```
 2. Then add the following line to the file
    ```sh
-   @reboot cd/opt/gpio-controller-api-1.3; ./GpioController
+   @reboot cd/opt/gpio-controller-api-1.4; ./GpioController
    ```
 </details>
 
@@ -127,7 +127,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/gpios" 
+    curl -X GET "http://69.203.14.52:3005/sbc/chipsets/gpios" 
 ```
 
 
@@ -146,7 +146,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81" 
+    curl -X GET "http://69.203.14.52:3005/sbc/chipsets/1/gpios/81" 
 ```
 </details>
 
@@ -159,7 +159,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X GET "http://192.168.1.144:3005/sbc/chipsets/1/gpios/{gpioId}/state" 
+    curl -X GET "http://69.203.14.52:3005/sbc/chipsets/1/gpios/81/state" 
 ```
 </details>
 
@@ -173,7 +173,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 - Example
 
 ```sh
-    curl -X POST "http://192.168.1.144:3005/sbc/chipsets/1/gpios/81/state/0" 
+    curl -X POST "http://69.203.14.52:3005/sbc/chipsets/1/gpios/81/state/0" 
 ```
 </details>
 
@@ -182,29 +182,36 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 - Description: Allows you to change multiple GPIO states to "Low" or "High" You can also choose to repeat the task or add a delay.
 
-
-- Example :
+- Example (Cancels all active requests) :
 
 ```sh
-    curl -X PATCH "http://192.168.1.111:3005/sbc/chipsets/gpios/state" \
+    curl -X PATCH "http://69.203.14.52:3005/sbc/chipsets/gpios/state" \
+     -H "Content-Type: application/json" \
+     -d '[]'
+```
+
+- Example (Starts a new request):
+
+```sh
+    curl -X PATCH "http://69.203.14.52:3005/sbc/chipsets/gpios/state" \
      -H "Content-Type: application/json" \
      -d '[
             {
-                "Gpios": [93, 74],
-                "Chipset": 1,
-                "State": "High",
-                "Options": {
-                    "Milliseconds": 50,
-                    "RepeatTimes": 10
-                }
-            },
-            {
-                "Gpios": [81],
+                "Gpios": [91, 92, 81],
                 "Chipset": 1,
                 "State": "Low",
                 "Options": {
-                    "Milliseconds": 1000,
-                    "RepeatTimes": 2
+                    "Milliseconds": 30000,
+                    "RepeatTimes": 1
+                }
+            },
+            {
+                "Gpios": [93],
+                "Chipset": 1,
+                "State": "High",
+                "Options": {
+                    "Milliseconds": 500,
+                    "RepeatTimes": 10
                 }
             }
         ]'
@@ -212,18 +219,39 @@ No coding required. Just follow the <a href="#installation">installation steps</
 </details>
 
 
-
 ## Settings
 
-To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.3`.
+To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.4`.
+
+#### Kestral:
+- `Kestral:Endpoints:Http:Url` - This is the endpoint your API will bind to. <br/>
+    By default it's set to 0:0:0:0:3005. Meaning it will bind to http://localhost:3005 and http://your.ip.address:3005.
+
+#### Authorization:
+- `Authorization:Enabled` - allows values "true" or "false". 
+  - False: Allows access to any CORS origins and headers. Recommended only for developement. 
+  - True: Requires a Google JWT to be authorized. It also requires the following authorization settings to be filled.
 
 
-- Your API defaults to Port 3005. This can be updated in your AppSettings.
-- Your IP binds to 0:0:0:0 which means it will be accessible on any IP address associated with your SBC. Use `ifconfig` to see that information.
-- If you install the secure version (see below) update the AuthorizedEmails section to include your email. This will give you access to your API. 
+- `Authorization:AuthorizedEmails` - Restricts entry to only the following Google users. <br/>
+  - Example value: `["yourEmailHere@gmail.com, anotherEmailHere@gmail.com]`
 
 
-- <b>Warning!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to install the Secure API version which requires a Google JWT Bearer Token for authorization. Without it, anybody can call your API.
+
+- `Authorization:AuthorizedCorsOrigins` - Restricts CORS origins. For security purposes only requests with the listed origins are allowed through.
+
+#### Filters:
+
+- `Filters:AllowOnlyTheseChipsets` - `GET /sbc/chipsets/gpios` will usually return all <b>Chipsets</b> from your board. Some projects only require a subset of these. Adding IDs here filters results. 
+  - Example: `[1]`
+
+
+
+- `Filters:AllowOnlyTheseGpios` - `GET /sbc/chipsets/gpios` will usually return all <b>GPIOs</b> from your board. Some projects only require a subset of these. Adding IDs here filters results.
+    - Example: `[91, 92, 81,95,80,79,94,93]`
+
+
+<b>Important!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to set `Authorization:Enabled` to `true`. Without it, anybody can call your API.
 <br/>
 
 <!-- ROADMAP -->
@@ -232,7 +260,7 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 - [x] add to list available GPIOs
 - [x] Add endpoint to Update GPIO state
 - [x] Add endpoint to read GPIO values
-- [ ] Add secure endpoints debian package for Google JWT Auth
+- [x] Add secure endpoints for Google JWT Auth
 - [ ] Add additional chipset architectures
     - [ ] linux-muscl-64
     - [ ] linux-arm
@@ -247,7 +275,7 @@ See the [open issues](https://github.com/SparkyCoder/Gpio_Controller_Api/issues)
 ## Contributing
 
 If you have a suggestion that would make this API better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+<br/><br/><b><h3>Don't forget to give the project a star! Thanks again!</h3><b/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

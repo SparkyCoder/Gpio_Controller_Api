@@ -5,22 +5,26 @@ using Microsoft.Extensions.Options;
 
 namespace GpioController.Controllers;
 
-public class SecureController : ControllerBase
+public class SecureController(IOptions<AuthorizationSettings> authorizationSettings) : ControllerBase
 {
-    private readonly AuthorizationSettings authorizationSettings;
-
-    public SecureController(IOptions<AuthorizationSettings> authorizationSettings)
-    {
-        this.authorizationSettings = authorizationSettings.Value;
-    }
+    private readonly AuthorizationSettings authorizationSettings = authorizationSettings.Value;
 
     protected bool IsAuthorized()
     {
+        return !authorizationSettings.Enabled || IsEmailClaimAuthorized();
+    }
+
+    private bool IsEmailClaimAuthorized()
+    {
+        const string validationType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+        
         var userIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        
         var emailCliam =
-            userIdentity?.Claims?.FirstOrDefault(claim => claim.Type == authorizationSettings?.ValidationType);
+            userIdentity?.Claims?.FirstOrDefault(claim => claim.Type == validationType);
 
         var currentUserEmail = emailCliam?.Value ?? string.Empty;
+        
         var isAuthorized = authorizationSettings?.AuthorizedEmails?.Contains(currentUserEmail) ?? false;
 
         return isAuthorized;
