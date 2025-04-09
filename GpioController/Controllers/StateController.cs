@@ -10,7 +10,7 @@ namespace GpioController.Controllers;
 [Authorize]
 [ApiController]
 [Route("sbc")]
-public class StateController(IOptions<AuthorizationSettings> authorizationSettings, IStateService stateService) : SecureController(authorizationSettings)
+public class StateController(IOptions<AuthorizationSettings> authorizationSettings, IStateService stateService, ITokenManagementService tokenManagementService) : SecureController(authorizationSettings)
 {
     [HttpGet]
     [Route("chipsets/{chipsetId}/gpios/{gpioId}/state")]
@@ -47,6 +47,7 @@ public class StateController(IOptions<AuthorizationSettings> authorizationSettin
         if (!IsAuthorized())
             return Unauthorized();
 
+        tokenManagementService.CancelAll();
         stateService.UpdateMultipleStates(updateRequests);
         
         return NoContent();

@@ -29,6 +29,8 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
 
         for (var timesRepeated = 1; timesRepeated < request.Options?.RepeatTimes*2; timesRepeated++)
         {
+            if (request.CancellationToken.IsCancellationRequested)
+                break;
             Thread.Sleep(sleepTime);
             RunOpposite(request);
         }

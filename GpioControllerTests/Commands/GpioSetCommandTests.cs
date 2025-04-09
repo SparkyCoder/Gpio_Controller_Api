@@ -2,6 +2,7 @@ using FakeItEasy;
 using GpioController.Commands;
 using GpioController.Commands.Request;
 using GpioController.Commands.Results;
+using GpioController.Extensions;
 using GpioController.Parsers;
 using GpioController.Services;
 
@@ -85,6 +86,39 @@ public class GpioSetCommandTests
         };
         
         sut.Execute(request);
+
+        A.CallTo(() => terminalService.RunCommand(A<string>._))
+            .MustHaveHappenedANumberOfTimesMatching(times => times == 1);
+    }
+    
+    [Fact]
+    public void Execute_ShouldExitEarly_WhenTokenIsCancelled()
+    {
+        var sut = GetSystemUnderTest();
+        var tokenSource = new CancellationTokenSource();
+
+        var request = new GpioSetRequest
+        {
+            Chipset = 1,
+            Gpios = [81],
+            State = "Low",
+            Options = new OptionalSettings
+            {
+                Milliseconds = 500,
+                RepeatTimes = 3
+            }
+        };
+
+        request.CancellationToken = tokenSource.Token;
+        
+        new Action(() =>
+        {
+            sut.Execute(request);
+        }).StartOnBackgroundThread();
+        
+        Thread.Sleep(50);
+        
+        tokenSource.Cancel();
 
         A.CallTo(() => terminalService.RunCommand(A<string>._))
             .MustHaveHappenedANumberOfTimesMatching(times => times == 1);

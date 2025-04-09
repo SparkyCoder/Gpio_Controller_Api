@@ -42,6 +42,7 @@ public class Program
 
         builder.Services.AddTransient<ITerminalService, TerminalService>();
         builder.Services.AddTransient<IGpioService, GpioService>();
+        builder.Services.AddSingleton<ITokenManagementService, TokenManagementService>();
         builder.Services.AddTransient<IStateService, StateService>();
         builder.Services.AddTransient<IParser<GpioInfoResult>, InfoParser>();
         builder.Services.AddTransient<IParser<GpioSetResult>, UpdateParser>();
