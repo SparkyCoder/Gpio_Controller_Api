@@ -73,7 +73,7 @@ public class GpioServiceTests
     }
 
     [Fact]
-    public void OrderResultsByFilter_ShouldSortResults_WhenFilterIsPresent()
+    public void OrderResultsByFilter_WhenFilterIsPresent_ShouldSortResults()
     {
         var sut = GetSystemUnderTest();
         
@@ -110,5 +110,45 @@ public class GpioServiceTests
         result[0].Id.Should().Be(81);
         result[1].Id.Should().Be(95);
         result[2].Id.Should().Be(80);
+    }
+    
+    [Fact]
+    public void OrderResultsByFilter_WhenNoFilterIsPresent_ShouldStillReturnOriginalResults()
+    {
+        var sut = GetSystemUnderTest();
+        
+        A.CallTo(() => filterSettings.Value).Returns(new FilterSettings
+        {
+            AllowOnlyTheseChipsets = [],
+            AllowOnlyTheseGpios = []
+        });
+
+        var data = new List<Gpio>
+        {
+            new()
+            {
+                Chipset = 1,
+                Id = 95,
+                Name = "Gpio 95"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 80,
+                Name = "Gpio 80"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 81,
+                Name = "Gpio 81"
+            }
+        };
+        
+        var result = sut.OrderResultsByFilter(data).ToArray();
+
+        result[0].Id.Should().Be(95);
+        result[1].Id.Should().Be(80);
+        result[2].Id.Should().Be(81);
     }
 }
