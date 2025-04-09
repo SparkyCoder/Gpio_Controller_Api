@@ -10,18 +10,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/SparkyCoder/Gpio_Controller_Api">
-    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/SparkyCoder/PinPanda-API">
+    <img src="/images/PinPanda-Api-Logo.jpeg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Gpio Controller API</h3>
+  <h3 align="center">PinPanda API</h3>
 
   <p align="center">
-    Kickstart your DIY project
+    The Cutest Way to Control Your GPIOs
     <br />
-    <a href="https://github.com/SparkyCoder/Gpio_Controller_Api/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/SparkyCoder/PinPanda-API/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/SparkyCoder/Gpio_Controller_Api/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/SparkyCoder/PinPanda-API/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -54,12 +54,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+PinPanda-Api is here to make your DIY projects a breeze! No more getting tangled in chipset architectures or stressing over the quirks of different board manufacturers. Just dive in and get started fast!
 
-- Do you want to start using GPIOs on your SBC?
-- Don't want to learn about chipsets, architectures, or drivers?
-- Want a simple solution that works regardless of manufacturer?
 
-Well, you're in the right place.<br/>
 No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to GPIO functionality.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,7 +94,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ### Installation
 1. Run the debian package installation
    ```sh
-   sudo curl https://raw.githubusercontent.com/SparkyCoder/Gpio_Controller_Api/refs/heads/main/Installation/Install.sh | bash
+   sudo curl https://raw.githubusercontent.com/SparkyCoder/PinPanda-Api/refs/heads/main/Installation/Install.sh | bash
    ```
 <details>
   <summary>Optional Installs</summary>
@@ -108,7 +105,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
       ```
 2. Then add the following line to the file
    ```sh
-   @reboot cd/opt/gpio-controller-api-1.4; ./GpioController >> /opt/gpio-controller-api-1.4-logs
+   @reboot cd/opt/pinpanda-api-1.4; ./PinPanda-Api >> /opt/pinpanda-api-1.4-logs
    ```
 </details>
 
@@ -221,7 +218,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 ## Settings
 
-To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/gpio-controller-api-1.4`.
+To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/PinPanda-API/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/pinpanda-api-1.4`.
 
 #### Kestral:
 - `Kestral:Endpoints:Http:Url` - This is the endpoint your API will bind to. <br/>
@@ -265,7 +262,7 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
     - [ ] linux-muscl-64
     - [ ] linux-arm
 
-See the [open issues](https://github.com/SparkyCoder/Gpio_Controller_Api/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/SparkyCoder/PinPanda-API/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -284,7 +281,7 @@ If you have a suggestion that would make this API better, please fork the repo a
 <!-- LICENSE -->
 ## License
 
- See [LICENSE.txt](https://github.com/SparkyCoder/Gpio_Controller_Api/blob/main/LICENSE) for more information.
+ See [LICENSE.txt](https://github.com/SparkyCoder/PinPanda-API/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -295,23 +292,23 @@ If you have a suggestion that would make this API better, please fork the repo a
 
 David Kobuszewski - dkob8789@gmail.com
 
-Project Link: [Gpio Controller Api](https://github.com/SparkyCoder/Gpio_Controller_Api)
+Project Link: [Gpio Controller Api](https://github.com/SparkyCoder/PinPanda-API)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/sparkycoder/gpio_controller_api.svg?style=for-the-badge
-[contributors-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/SparkyCoder/Gpio_Controller_Api.svg?style=for-the-badge
-[forks-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/network/members
-[stars-shield]: https://img.shields.io/github/stars/SparkyCoder/Gpio_Controller_Api.svg?style=for-the-badge
-[stars-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/stargazers
-[issues-shield]: https://img.shields.io/github/issues/SparkyCoder/Gpio_Controller_Api.svg?style=for-the-badge
-[issues-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/issues
-[license-shield]: https://img.shields.io/github/license/SparkyCoder/Gpio_Controller_Api.svg?style=for-the-badge
-[license-url]: https://github.com/SparkyCoder/Gpio_Controller_Api/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/sparkycoder/PinPanda-Api.svg?style=for-the-badge
+[contributors-url]: https://github.com/SparkyCoder/PinPanda-API/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
+[forks-url]: https://github.com/SparkyCoder/PinPanda-API/network/members
+[stars-shield]: https://img.shields.io/github/stars/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
+[stars-url]: https://github.com/SparkyCoder/PinPanda-API/stargazers
+[issues-shield]: https://img.shields.io/github/issues/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
+[issues-url]: https://github.com/SparkyCoder/PinPanda-API/issues
+[license-shield]: https://img.shields.io/github/license/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
+[license-url]: https://github.com/SparkyCoder/PinPanda-API/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/david-kobuszewski-60315428
