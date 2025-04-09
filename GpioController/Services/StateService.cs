@@ -26,7 +26,8 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
     public void UpdateSingleState(GpioSetRequest request)
     {
         gpioService.GetGpioById(request.Chipset, request.Gpios.First());
-        
+     
+        request.CancellationToken = tokenManagementService.CreateToken(request);
         var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
         command.Execute(request);
     }
@@ -42,6 +43,8 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
                 request.CancellationToken = tokenManagementService.CreateToken(request);
                 var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
                 command.Execute(request);
+                if (request.CancellationToken.IsCancellationRequested)
+                    break;
             }
         }).StartOnBackgroundThread();
     }

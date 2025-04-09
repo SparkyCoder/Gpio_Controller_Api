@@ -27,11 +27,11 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
 
         var sleepTime = request.Options?.Milliseconds ?? 0;
 
-        for (var timesRepeated = 1; timesRepeated < request.Options?.RepeatTimes*2; timesRepeated++)
+        for (var timesRepeated = 1; timesRepeated < request.Options?.RepeatTimes * 2; timesRepeated++)
         {
+            Thread.Sleep(sleepTime);
             if (request.CancellationToken.IsCancellationRequested)
                 break;
-            Thread.Sleep(sleepTime);
             RunOpposite(request);
         }
     }
