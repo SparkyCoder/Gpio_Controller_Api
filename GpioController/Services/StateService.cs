@@ -7,7 +7,7 @@ using GpioController.Models;
 
 namespace GpioController.Services;
 
-public class StateService(ICommandFactory commandFactory, IGpioService gpioService) : IStateService
+public class StateService(ICommandFactory commandFactory, IGpioService gpioService, ITokenManagementService tokenManagementService) : IStateService
 {
     public GpioReadResult GetStateByGpioId(int chipsetId, int gpioId)
     {
@@ -38,7 +38,8 @@ public class StateService(ICommandFactory commandFactory, IGpioService gpioServi
         new Action(() =>
         {
             foreach (var request in updateRequests)
-            {
+            { 
+                request.CancellationToken = tokenManagementService.CreateToken(request);
                 var command = commandFactory.GetCommand<GpioSetRequest, GpioSetResult>();
                 command.Execute(request);
             }

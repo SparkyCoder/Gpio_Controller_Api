@@ -6,6 +6,7 @@ public class GpioSetRequest : Request
     public required IEnumerable<int> Gpios { get; set; }
     public required string  State { get; set; }
     public OptionalSettings? Options { get; set; }
+    public CancellationToken CancellationToken { get; set; }
 }
 
 public class OptionalSettings

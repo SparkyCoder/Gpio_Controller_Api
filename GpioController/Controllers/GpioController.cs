@@ -8,22 +8,29 @@ namespace GpioController.Controllers;
 
 [ApiController]
 [Route("sbc")]
+[Authorize(Policy = "ConditionalPolicy")]
 public class GpioController(IOptions<AuthorizationSettings> authorizationSettings, IGpioService gpioService) : SecureController(authorizationSettings)
 {
-    [AllowAnonymous]
     [HttpGet]
     [Route("chipsets/gpios")]
     public IActionResult Get()
     {
+        if (!IsAuthorized())
+            return Unauthorized();
+        
         var gpios = gpioService.GetGpios();
-        return Ok(gpios);
+        var filteredResults = gpioService.OrderResultsByFilter(gpios);
+        
+        return Ok(filteredResults);
     }
     
-    [AllowAnonymous]
     [HttpGet]
     [Route("chipsets/{chipsetId}/gpios/{gpioId}")]
     public IActionResult GetById([FromRoute] int chipsetId, [FromRoute] int gpioId)
     {
+        if (!IsAuthorized())
+            return Unauthorized();
+        
         var gpio = gpioService.GetGpioById(chipsetId, gpioId);
         return Ok(gpio);
     }
