@@ -1,18 +1,24 @@
-Open Source License - Attribution, No Commercial Use, and Share-Alike
+Custom Open Source License - Attribution and Ownership
 
-This software is provided free of charge under the following conditions:
+2025 David Kobuszewski (SparkyCoder)
 
-1. Attribution: All copies or substantial portions of the software must include the following attribution:
-   - The original author(s) of the software must be properly credited.
-   - This license text must be included in all copies or substantial portions of the software.
-   - Any modified versions of the software must clearly indicate the changes made and retain proper attribution to the original author(s).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or modify
+copies of the Software, subject to the following conditions:
 
-2. Non-Commercial Use Only: The software, including any modifications, may not be sold, offered for sale, or used as part of any commercial product or service.
+1. Attribution: All copies or substantial portions of the Software must include the following attribution:
+   - The original author, David Kobuszewski (SparkyCoder), must be properly credited.
+   - This copyright notice and this license must be included in all copies or substantial portions of the Software.
+   - Any modified versions of the Software must clearly indicate the changes made and retain proper attribution to the original author(s).
 
-3. Share-Alike: Any modified versions of the software, or derivative works, must remain open-source and free to use, under the same terms as this license. You may not impose any additional restrictions that would limit others from using, modifying, and distributing the software in the same way.
+2. Non-Commercial Use: The Software, including any modifications, may not be sold, offered for sale, or used as part of any commercial product or service.
 
-4. No Trademark Use: The name(s) and any trademarks of the author(s) may not be used to endorse or promote derived works without written permission.
+3. Share-Alike: Any modified versions or derivative works must remain open-source and free to use, under the same terms as this license.
 
-5. Distribution of Modified Software: If you distribute modified versions of the software, you must include the modified license and the attribution to the original author(s).
+4. No Trademark Use: The name(s), trademark(s), or other identifiers of the author(s) may not be used to endorse or promote derived works without written permission.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+5. Distribution of Modified Software: If you distribute modified versions of the Software, you must include this modified license and the attribution to the original author(s).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
