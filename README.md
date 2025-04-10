@@ -64,7 +64,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 ### Prerequisites
 
-- Have a Linux Distro installed on your board. 
+- Have a Debian/Ubuntu Linux Distro installed on your board. 
     <details>
   <summary>More Info</summary>
    <br/>Follow your boards documentation if you haven't already. <br/>
