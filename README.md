@@ -63,6 +63,13 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ## Getting Started
 
 ### Prerequisites
+- Have curl installed:
+
+```sh
+  sudo apt-get install curl
+```
+
+
 
 - Have a Debian/Ubuntu Linux Distro installed on your board. 
     <details>
@@ -77,12 +84,6 @@ No coding required. Just follow the <a href="#installation">installation steps</
 <details>
   <summary>Optional Installs</summary>
 
-- Install curl:
-
-```sh
-  sudo apt-get install curl
-```
-
 - Install crontab if you want to automatically run the API on startup. 
 
 ```sh
@@ -96,7 +97,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
    sudo curl https://raw.githubusercontent.com/SparkyCoder/PinPanda-Api/refs/heads/main/Installation/Install.sh | bash
    ```
 <details>
-  <summary>Optional Installs</summary>
+  <summary>Optional Steps</summary>
 
 1. To start the API on reboot:
       ```sh
