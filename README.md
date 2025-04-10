@@ -11,13 +11,12 @@
 <br />
 <div align="center">
   <a href="https://github.com/SparkyCoder/PinPanda-API">
-    <img src="/images/PinPanda-Api-Logo.jpeg" alt="Logo" width="80" height="80">
+    <img src="/images/PinPanda-Api-Logo.jpeg" alt="Logo" width="350" height="350">
   </a>
 
-  <h3 align="center">PinPanda API</h3>
+  <h3 align="center">The Cutest Way to Control Your GPIOs</h3>
 
   <p align="center">
-    The Cutest Way to Control Your GPIOs
     <br />
     <a href="https://github.com/SparkyCoder/PinPanda-API/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
