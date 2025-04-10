@@ -41,7 +41,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#settings">Settings</a></li>
+    <li><a href="#settings">Optional Settings</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -215,9 +215,10 @@ No coding required. Just follow the <a href="#installation">installation steps</
 </details>
 
 
-## Settings
+## Optional Settings
 
-To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/PinPanda-API/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/pinpanda-api-1.4`.
+To see your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/PinPanda-API/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/pinpanda-api-1.4`.<br/>
+All the settings below are optional. PinPanda should work without changing any of these. 
 
 #### Kestral:
 - `Kestral:Endpoints:Http:Url` - This is the endpoint your API will bind to. <br/>
@@ -260,6 +261,8 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 - [ ] Add additional chipset architectures
     - [ ] linux-muscl-64
     - [ ] linux-arm
+- [ ] Add UI for interacting with API
+- [ ] Update Install
 
 See the [open issues](https://github.com/SparkyCoder/PinPanda-API/issues) for a full list of proposed features (and known issues).
 
@@ -280,7 +283,7 @@ If you have a suggestion that would make this API better, please fork the repo a
 <!-- LICENSE -->
 ## License
 
- See [LICENSE.txt](https://github.com/SparkyCoder/PinPanda-API/blob/main/LICENSE) for more information.
+ See [LICENSE](https://github.com/SparkyCoder/PinPanda-API/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
