@@ -310,7 +310,7 @@ Project Link: [Gpio Controller Api](https://github.com/SparkyCoder/PinPanda-API)
 [issues-shield]: https://img.shields.io/github/issues/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
 [issues-url]: https://github.com/SparkyCoder/PinPanda-API/issues
 [license-shield]: https://img.shields.io/github/license/SparkyCoder/PinPanda-Api.svg?style=for-the-badge
-[license-url]: https://github.com/SparkyCoder/PinPanda-API/blob/master/LICENSE.txt
+[license-url]: https://github.com/SparkyCoder/PinPanda-API/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/david-kobuszewski-60315428
