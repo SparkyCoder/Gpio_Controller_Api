@@ -252,8 +252,6 @@ Follow the <a href="#installation">installation steps</a> to get started.
 
 <details>
 <summary>Step-by-step screenshots</summary>
-=======
-1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com) <br/>
 
 <img src="/images/step2.png" alt="Logo" width="270" height="600">
 <img src="/images/step3.png" alt="Logo" width="270" height="600">
