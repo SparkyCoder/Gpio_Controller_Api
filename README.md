@@ -43,6 +43,7 @@
     </li>
     <li><a href="#online-usage">Online Usage</a></li>
     <li><a href="#local-usage">Local Usage</a></li>
+    <li><a href="#architecture">Architecture</a></li>
     <li><a href="#advanced-settings">Settings</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -232,19 +233,29 @@ Follow the <a href="#installation">installation steps</a> to get started.
 </details>
 
 ## Online-Usage
-pre-requisite:
-1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com) <br/>
-<img src="/images/step2.png" alt="Logo" width="270" height="600">
-<br/><br/><br/>2 - Login with Google <br/>
-<img src="/images/step3.png" alt="Logo" width="270" height="600">
-<br/><br/><br/>3 - Visit [whatismyipaddress](https://whatismyipaddress.com/) to find and copy your public IP address. This is how [PinPanda-API](https://pinpanda-api.com) will communicate securely with your board. <br/>
-<img src="/images/step4.png" alt="Logo" width="270" height="600">
-<br/><br/><br/>4 - Enter in that IPv4 address you just copied, followed by the port your API is running on. (Default is 3005) <br/>
-<img src="/images/step5.png" alt="Logo" width="270" height="600">
-<br/><br/><br/>5 - Add a new request and start interacting with the GPIOs on your board. <br/>
-<img src="/images/step6.png" alt="Logo" width="270" height="600">
-<br/><br/><br/>6 - Send requests to turn off / on your GPIO pins. Use the red stop button to cancel all active requests. That's it!<br/>
+1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com)
 
+2 - Login with Google Oauth2.0<br/>
+
+3 - Visit [whatismyipaddress](https://whatismyipaddress.com/) to find and copy your public IP address. This is how [PinPanda-API](https://pinpanda-api.com) will communicate securely with your board.
+
+4 - Enter in that IPv4 address you just copied, followed by the port your API is running on. (Default is 3005)
+
+5 - Add a new request and start interacting with the GPIOs on your board.
+
+6 - Send requests to turn off / on your GPIO pins. Use the red stop button to cancel all active requests. That's it!
+
+<details>
+<summary>Step-by-step screenshots</summary>
+<img src="/images/step2.png" alt="Logo" width="270" height="600">
+<img src="/images/step3.png" alt="Logo" width="270" height="600">
+<img src="/images/step4.png" alt="Logo" width="270" height="600">
+<img src="/images/step5.png" alt="Logo" width="270" height="600">
+<img src="/images/step6.png" alt="Logo" width="270" height="600">
+</details>
+
+## Architecture
+<img src="/images/architecture.png" alt="Logo" width="675" height="300">
 
 
 ## Advanced-Settings
@@ -293,6 +304,7 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 - [x] Create UI to interface with individual boards
 - [x] Add communication between SBC and [PinPanda-API](https://pinpanda-api.com)
 - [x] Add documentation
+- [ ] Add GPIO mapping on API side to set custom labels 
 - [ ] Add additional chipset architectures
     - [ ] linux-muscl-64
     - [ ] linux-arm
