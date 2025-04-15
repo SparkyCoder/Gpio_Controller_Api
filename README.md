@@ -15,6 +15,7 @@
   </a>
 
   <h3 align="center">The Cutest Way to Control Your GPIOs</h3>
+    <h3 align="center">https://pinpanda-api.com/</h3>
 
   <p align="center">
     <br />
@@ -40,8 +41,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#settings">Settings</a></li>
+    <li><a href="#online-usage">Online Usage</a></li>
+    <li><a href="#local-usage">Local Usage</a></li>
+    <li><a href="#advanced-settings">Settings</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -53,10 +55,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-PinPanda-Api is here to make your DIY projects a breeze! No more getting tangled in chipset architectures or stressing over the quirks of different board manufacturers. Just dive in and get started fast!
+PinPanda-API is a easily installable REST API that allows you to interact with GPIOs online at https://pinpanda-api.com/ or locally. No coding required. 
+It makes any DIY project a breeze. No more getting involved with chipset architectures or worrying about different board manufacturers. Just dive in and get started fast!
 
 
-No coding required. Just follow the <a href="#installation">installation steps</a> to get quick access to GPIO functionality.
+Follow the <a href="#installation">installation steps</a> to get started.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -64,7 +67,7 @@ No coding required. Just follow the <a href="#installation">installation steps</
 
 ### Prerequisites
 
-- Have a Linux Distro installed on your board. 
+- Have an Ubuntu / Debian Distro installed on your board. 
     <details>
   <summary>More Info</summary>
    <br/>Follow your boards documentation if you haven't already. <br/>
@@ -93,10 +96,13 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ### Installation
 1. Run the debian package installation
    ```sh
-   sudo curl https://raw.githubusercontent.com/SparkyCoder/PinPanda-Api/refs/heads/main/Installation/Install.sh | bash
+   sudo curl https://pinpanda-api.com/Install.sh | bash
    ```
+
+
+
 <details>
-  <summary>Optional Installs</summary>
+  <summary>(Optional) Have PinPanda-API launch on Reboot</summary>
 
 1. To start the API on reboot:
       ```sh
@@ -108,12 +114,23 @@ No coding required. Just follow the <a href="#installation">installation steps</
    ```
 </details>
 
+<details>
+<summary>(Optional, but Required for Online Control) Grant Access</summary>
+
+1. Go into the appsettings.json file and update the `AuthorizedEmails` value with the email address you'll be logging in with. <br/>
+   <img src="/images/step0.png" alt="Logo" width="400" height="550">
+2. At this point, the API is only available on your local intranet. To make it accessible from [PinPada-API](https://pinpanda-api.com) you'll need to give it access. To do this login to your router or firewall and add a rule. Allow TCP traffic for the IP of your SBC Development Board and the port the API is running on (Default is 3005). It should look something like this: <br/>
+   <img src="/images/step1.png" alt="Logo" width="270" height="600"><br/>
+
+
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Local-Usage
 [Postman Documentation](https://documenter.getpostman.com/view/2447338/2sB2cSiPcM)
 <details>
   <summary>GET /sbc/chipsets/gpios</summary>
@@ -214,8 +231,23 @@ No coding required. Just follow the <a href="#installation">installation steps</
 ```
 </details>
 
+## Online-Usage
+pre-requisite:
+1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com) <br/>
+<img src="/images/step2.png" alt="Logo" width="270" height="600">
+<br/><br/><br/>2 - Login with Google <br/>
+<img src="/images/step3.png" alt="Logo" width="270" height="600">
+<br/><br/><br/>3 - Visit [whatismyipaddress](https://whatismyipaddress.com/) to find and copy your public IP address. This is how [PinPanda-API](https://pinpanda-api.com) will communicate securely with your board. <br/>
+<img src="/images/step4.png" alt="Logo" width="270" height="600">
+<br/><br/><br/>4 - Enter in that IPv4 address you just copied, followed by the port your API is running on. (Default is 3005) <br/>
+<img src="/images/step5.png" alt="Logo" width="270" height="600">
+<br/><br/><br/>5 - Add a new request and start interacting with the GPIOs on your board. <br/>
+<img src="/images/step6.png" alt="Logo" width="270" height="600">
+<br/><br/><br/>6 - Send requests to turn off / on your GPIO pins. Use the red stop button to cancel all active requests. That's it!<br/>
 
-## Settings
+
+
+## Advanced-Settings
 
 To update your API settings, refer to the [AppSettings](https://github.com/SparkyCoder/PinPanda-API/blob/main/GpioController/appsettings.json) file in your optional installs directory: `/opt/pinpanda-api-1.4`.
 
@@ -253,10 +285,14 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] add to list available GPIOs
+- [x] Add endpoint to list available GPIOs
 - [x] Add endpoint to Update GPIO state
 - [x] Add endpoint to read GPIO values
+- [x] Add settings to make usage easier (filter, security, configuration, etc...)
 - [x] Add secure endpoints for Google JWT Auth
+- [x] Create UI to interface with individual boards
+- [x] Add communication between SBC and [PinPanda-API](https://pinpanda-api.com)
+- [x] Add documentation
 - [ ] Add additional chipset architectures
     - [ ] linux-muscl-64
     - [ ] linux-arm
@@ -271,7 +307,19 @@ See the [open issues](https://github.com/SparkyCoder/PinPanda-API/issues) for a 
 ## Contributing
 
 If you have a suggestion that would make this API better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-<br/><br/><b><h3>Don't forget to give the project a star! Thanks again!</h3><b/>
+<br/><br/>
+
+
+Contribute in other ways. Sponserships are solely responsible for keeping this project running. If you found this repo useful please consider becoming a sponsor. 
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-💖-ff69b4?style=for-the-badge)](https://github.com/sponsors/SparkyCoder)
+
+
+<b><h4>Don't forget to give the project a star! </h3><b/>
+
+
+
+<b><h4>Thank you! </h3><b/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
