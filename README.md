@@ -18,11 +18,8 @@
   <h3 align="center">The Cutest Way to Control Your GPIOs</h3>
     <h3 align="center">https://pinpanda-api.com/</h3>
 
-    <div align="center">
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-💖-ff69b4?style=for-the-badge)](https://github.com/sponsors/YOUR_USERNAME)
-
-</div>
 
   <p align="center">
     <br />
