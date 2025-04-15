@@ -19,7 +19,8 @@ public class GpioController(IOptions<AuthorizationSettings> authorizationSetting
             return Unauthorized();
         
         var gpios = gpioService.GetGpios();
-        var filteredResults = gpioService.OrderResultsByFilter(gpios);
+        var mappedResults = gpioService.MapGpioNames(gpios);
+        var filteredResults = gpioService.OrderResultsByFilter(mappedResults);
         
         return Ok(filteredResults);
     }

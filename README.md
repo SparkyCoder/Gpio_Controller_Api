@@ -289,6 +289,28 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 - `Filters:AllowOnlyTheseGpios` - `GET /sbc/chipsets/gpios` will usually return all <b>GPIOs</b> from your board. Some projects only require a subset of these. Adding IDs here filters results.
     - Example: `[91, 92, 81,95,80,79,94,93]`
 
+### Mappings:
+
+- `Mappings:GpioNames` - `GET /sbc/chipsets/gpios` will usually return the names assigned by the SBC. If you'd like to return custom names in their place, use this setting. 
+  - Example: ```[
+      {
+      "Id": 91,
+      "Name": "VCC Power"
+      },
+      {
+        "Id": 92,
+        "Name": "Common"
+      },
+      {
+        "Id": 81,
+        "Name": "Zone 1"
+      },
+      {
+        "Id": 85,
+        "Name": "Zone 2"
+      }
+]```
+  
 
 <b>Important!</b><br/>If you expose your IP and Port to the public (By adding a rule to your router / firewall) it is <b>highly recommended</b> to set `Authorization:Enabled` to `true`. Without it, anybody can call your API.
 <br/>

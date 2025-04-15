@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace GpioController.Services;
 
-public class GpioService(ICommandFactory commandFactory, IOptions<FilterSettings> filterSettings) : IGpioService
+public class GpioService(ICommandFactory commandFactory, IOptions<FilterSettings> filterSettings, IOptions<MappingSettings> mappingSettings) : IGpioService
 {
     public IEnumerable<Gpio> GetGpios()
     {
@@ -25,6 +25,23 @@ public class GpioService(ICommandFactory commandFactory, IOptions<FilterSettings
         if (results.Any() && gpioFilter.AllowOnlyTheseGpios.Any())
             results = results.Where(gpio => gpioFilter.AllowOnlyTheseGpios.Contains(gpio.Id));
         
+        return results;
+    }
+
+    public IEnumerable<Gpio?> MapGpioNames(IEnumerable<Gpio> results)
+    {
+        var nameMap = mappingSettings?.Value?.GpioNames ?? [];
+
+        if (!results.Any() || !nameMap.Any()) return results;
+
+        var mapById = nameMap.ToDictionary(m => m.Id, m => m.Name);
+
+        foreach (var gpio in results)
+        {
+            if (mapById.TryGetValue(gpio.Id, out var customMappedName))
+                gpio.Name = customMappedName;
+        }
+
         return results;
     }
 

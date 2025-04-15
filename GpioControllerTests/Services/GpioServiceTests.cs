@@ -14,6 +14,7 @@ public class GpioServiceTests
 {
     private ICommandFactory commandFactory;
     private IOptions<FilterSettings> filterSettings;
+    private IOptions<MappingSettings> mappingSettings;
     private ICommand<GpioInfoRequest, GpioInfoResult> command;
 
     public GpioService GetSystemUnderTest()
@@ -21,8 +22,9 @@ public class GpioServiceTests
         command = A.Fake<ICommand<GpioInfoRequest, GpioInfoResult>>();
         commandFactory = A.Fake<ICommandFactory>();
         filterSettings = A.Fake<IOptions<FilterSettings>>();
+        mappingSettings = A.Fake<IOptions<MappingSettings>>();
 
-        return new GpioService(commandFactory, filterSettings);
+        return new GpioService(commandFactory, filterSettings, mappingSettings);
     }
 
     [Fact]
@@ -150,5 +152,95 @@ public class GpioServiceTests
         result[0].Id.Should().Be(95);
         result[1].Id.Should().Be(80);
         result[2].Id.Should().Be(81);
+    }
+    
+    [Fact]
+    public void MapGpioNames_WhenCustomMapsAreDefined_MapsNamesCorrectly()
+    {
+        var sut = GetSystemUnderTest();
+        
+        A.CallTo(() => mappingSettings.Value).Returns(new MappingSettings
+        {
+           GpioNames =
+           [
+               new Map
+               {
+                   Id = 91,
+                   Name = "VCC"
+               },
+               new Map
+               {
+                   Id = 92,
+                   Name = "Common"
+               },
+               new Map
+               {
+                   Id = 81,
+                   Name = "Zone 1"
+               }
+           ]
+        });
+
+        var data = new List<Gpio>
+        {
+            new()
+            {
+                Chipset = 1,
+                Id = 91,
+                Name = "Gpio 91"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 92,
+                Name = "Gpio 92"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 81,
+                Name = "Gpio 81"
+            }
+        };
+        
+        var result = sut.MapGpioNames(data).ToArray();
+
+        result[0].Name.Should().Be("VCC");
+        result[1].Name.Should().Be("Common");
+        result[2].Name.Should().Be("Zone 1");
+    }
+    
+    [Fact]
+    public void MapGpioNames_WhenNoMapsAreDefined_DoesNotError()
+    {
+        var sut = GetSystemUnderTest();
+
+        A.CallTo(() => mappingSettings.Value).Returns(new MappingSettings());
+
+        var data = new List<Gpio>
+        {
+            new()
+            {
+                Chipset = 1,
+                Id = 91,
+                Name = "Gpio 91"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 92,
+                Name = "Gpio 92"
+            },
+            new()
+            {
+                Chipset = 1,
+                Id = 81,
+                Name = "Gpio 81"
+            }
+        };
+        
+        var result = sut.MapGpioNames(data).ToArray();
+
+        result.Should().BeEquivalentTo(data);
     }
 }
