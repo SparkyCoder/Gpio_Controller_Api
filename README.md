@@ -5,6 +5,7 @@
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Sponsor](https://img.shields.io/badge/Sponsor-💖-ff69b4?style=for-the-badge)](https://github.com/sponsors/SparkyCoder)
 
 
 <!-- PROJECT LOGO -->
@@ -16,6 +17,9 @@
 
   <h3 align="center">The Cutest Way to Control Your GPIOs</h3>
     <h3 align="center">https://pinpanda-api.com/</h3>
+
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-💖-ff69b4?style=for-the-badge)](https://github.com/sponsors/YOUR_USERNAME)
 
   <p align="center">
     <br />
@@ -233,6 +237,7 @@ Follow the <a href="#installation">installation steps</a> to get started.
 </details>
 
 ## Online-Usage
+
 1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com)
 
 2 - Login with Google Oauth2.0<br/>
@@ -247,6 +252,9 @@ Follow the <a href="#installation">installation steps</a> to get started.
 
 <details>
 <summary>Step-by-step screenshots</summary>
+=======
+1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com) <br/>
+
 <img src="/images/step2.png" alt="Logo" width="270" height="600">
 <img src="/images/step3.png" alt="Logo" width="270" height="600">
 <img src="/images/step4.png" alt="Logo" width="270" height="600">
