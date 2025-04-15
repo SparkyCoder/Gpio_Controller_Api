@@ -295,7 +295,7 @@ To update your API settings, refer to the [AppSettings](https://github.com/Spark
 - `Filters:AllowOnlyTheseGpios` - `GET /sbc/chipsets/gpios` will usually return all <b>GPIOs</b> from your board. Some projects only require a subset of these. Adding IDs here filters results.
     - Example: `[91, 92, 81,95,80,79,94,93]`
 
-### Mappings:
+#### Mappings:
 
 - `Mappings:GpioNames` - `GET /sbc/chipsets/gpios` will usually return the names assigned by the SBC. If you'd like to return custom names in their place, use this setting. 
   - Example: ```[
