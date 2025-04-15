@@ -5,6 +5,7 @@
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Sponsor](https://img.shields.io/badge/Sponsor-💖-ff69b4?style=for-the-badge)](https://github.com/sponsors/SparkyCoder)
 
 
 <!-- PROJECT LOGO -->
@@ -232,7 +233,6 @@ Follow the <a href="#installation">installation steps</a> to get started.
 </details>
 
 ## Online-Usage
-pre-requisite:
 1 - Navigate to the [PinPanda-API website](https://pinpanda-api.com) <br/>
 <img src="/images/step2.png" alt="Logo" width="270" height="600">
 <br/><br/><br/>2 - Login with Google <br/>
