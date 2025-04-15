@@ -26,6 +26,10 @@ public class Program
             builder.Configuration.GetSection("Filters")
         );
         
+        builder.Services.Configure<MappingSettings>(
+            builder.Configuration.GetSection("Mappings")
+        );
+        
         var requireAuth = builder.Configuration.GetValue<bool>("Authorization:Enabled");
 
         if (requireAuth)
