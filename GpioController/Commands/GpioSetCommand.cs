@@ -25,15 +25,24 @@ public class GpioSetCommand(IParser<GpioSetResult> parser, ITerminalService term
     {
         if (request.Options == null) return;
 
+        var originalState = request.State;
+
         var sleepTime = request.Options?.Milliseconds ?? 0;
 
         for (var timesRepeated = 1; timesRepeated < request.Options?.RepeatTimes * 2; timesRepeated++)
         {
             Thread.Sleep(sleepTime);
+            
             if (request.CancellationToken.IsCancellationRequested)
-                break;
+            {
+                request.State = originalState;
+                break;   
+            }
+            
             RunOpposite(request);
         }
+        
+        request.State = originalState;
     }
 
     private void RunOpposite(GpioSetRequest request)

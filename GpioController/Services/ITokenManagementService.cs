@@ -6,4 +6,5 @@ public interface ITokenManagementService
 {
     public void CancelAll();
     public CancellationToken CreateToken(GpioSetRequest request);
+    public void RemoveCompletedTask(GpioSetRequest request);
 }
