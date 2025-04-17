@@ -29,6 +29,14 @@ public class TokenManagementService(ICommandFactory commandFactory, ILogger<Toke
         return cts.Token;
     }
 
+    public void RemoveCompletedTask(GpioSetRequest request)
+    {
+        lock (lockingMechanism)
+        {
+            activeTokenSources.RemoveAll(activeTask => activeTask.ActiveRequest == request );
+        }
+    }
+
     public void CancelAll()
     {
         lock (lockingMechanism)
